@@ -1,0 +1,30 @@
+<section class="container px-5">
+  <%= render 'shared/header' %>
+  <div class="col-md-6 offset-md-10 py-1">
+   <%= link_to "Add Food", new_food_path, class: "edit-link" %>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Measurement Unit</th>
+          <th scope="col">Price</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <th><%= food.name %></th>
+          <td><%= food.measurement_unit %></td>
+          <td><%= number_to_currency(food.price) %></td>
+          <td>
+          <%= button_to "Delete", food_path(food), class: "border border-light rounded-pill", method: :delete, data: { confirm: "Are you sure about delete #{food.name}?" } %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
