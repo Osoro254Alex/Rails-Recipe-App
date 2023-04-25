@@ -7,7 +7,6 @@ class Recipe < ApplicationRecord
   end
 
   def total_price
-    recipe_foods.includes(:food).sum {|recipe_food| recipe_food.food.price * recipe_food.quantity}
+    recipe_foods.includes(:food).sum { |recipe_food| recipe_food.food.price * recipe_food.quantity }
   end
-
 end
