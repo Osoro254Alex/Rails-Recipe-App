@@ -1,0 +1,31 @@
+<div class="container width-50">
+  <h2>Shopping</h2>
+  <div class="d-flex justify-content-between">
+    <p>Amount of food items to buy: <%= @total_items %></p>
+    <p>Total value of food needed: <%= number_to_currency(@total_price) %></p>
+  </div>
+  <div class="table-responsive">
+    <% if @shopping_list_items.present? %>
+      <table class="table align-middle table-bordered border-primary">
+        <thead>
+          <tr class="table-active">
+            <th scope="col">Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <% @shopping_list_items.each do |item| %>
+            <tr scope="row">
+              <td><%= item[:food].name %></td>
+              <td><%= item[:quantity] %></td>
+              <td><%= number_to_currency(item[:price]) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No missing food items found.</p>
+    <% end %>
+  </div>
+</div>
