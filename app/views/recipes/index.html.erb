@@ -1,0 +1,21 @@
+<h1>List all Recipes</h1>
+<% if @recipe.blank? %>
+  <p>No recipe available</p>
+<% else %>
+  <ul class="recipes-box">
+    <% @recipe.each do |recipe| %>
+      <li class="recipe">
+        <div>
+          <a href=<%= url_for(recipe_path(recipe)) %> >
+            <p><%= recipe.name %></p>
+            <p><%= recipe.description %></p>
+            <% if current_user.id == recipe.user_id %>
+              <%= button_to "Delete Recipe", recipe, method: :delete %>
+            <% end %>
+          </a>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<a href="<%= url_for(new_recipe_path) %>" class="button button-wide">Add New Recipe</a>
