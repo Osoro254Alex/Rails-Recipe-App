@@ -24,9 +24,9 @@ class FoodsController < ApplicationController
     @food = current_user.foods.find(params[:id])
 
     if @food.destroy
-      flash[:success] = "Food was successfully deleted."
+      flash[:success] = 'Food was successfully deleted.'
     else
-      flash[:error] = "Failed to delete food."
+      flash[:error] = 'Failed to delete food.'
     end
     redirect_to foods_path
   end
@@ -36,5 +36,4 @@ class FoodsController < ApplicationController
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity, :user_id)
   end
-
 end
