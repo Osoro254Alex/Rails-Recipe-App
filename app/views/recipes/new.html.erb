@@ -1,0 +1,39 @@
+<ul>
+  <li>
+    <h2>Create a New Recipe</h2>
+  </li>
+  <li>
+    <%= form_for @recipe, url: recipes_path, local: true, data: { turbo: false }, method: :post do |form| %>
+      <% if @recipe.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+            <% @recipe.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+      </div>
+      <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+      </div>
+      <div>
+        <%= form.label :preparation_time %>
+        <%= form.text_field :preparation_time %>
+      </div>
+      <div>
+        <%= form.label :cooking_time %>
+        <%= form.text_field :cooking_time %>
+      </div>
+      <div>
+        <%= form.label :public %>
+        <%= form.check_box :public%>
+      </div>
+      <%= form.submit "Create Recipe" %>
+    <% end %>
+  </li>
+</ul>
