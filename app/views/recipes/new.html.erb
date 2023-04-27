@@ -19,7 +19,7 @@
       </div>
       <div>
         <%= form.label :description %>
-        <%= form.text_area :description %>
+        <%= form.text_area :description, class: "recipe_area" %>
       </div>
       <div>
         <%= form.label :preparation_time %>
@@ -33,7 +33,10 @@
         <%= form.label :public %>
         <%= form.check_box :public%>
       </div>
-      <%= form.submit "Create Recipe" %>
+       <div>
+      <%= form.submit "Create Recipe", class: "btn btn-primary" %>
+      <%= link_to "Cancel", recipes_path, class: "btn btn-primary cancel-link" %>
+    </div>
     <% end %>
   </li>
 </ul>
