@@ -29,6 +29,11 @@
   text-decoration: none;
   color: rgb(66, 66, 245);
 }
+
+h4 .link {
+  text-decoration: none;
+}
+
 .link:hover {
   text-decoration: underline;
   font-size: 16px;
@@ -78,7 +83,7 @@ h2 {
 }
 
 .submit:hover {
-  background-color: #0033cc;
+  background-color: #03c;
 }
 
 .recipes-box {
@@ -119,4 +124,46 @@ h2 {
   gap: 50px;
   margin-top: 50px;
   margin-left: 40px;
+}
+
+.public {
+  background-color: green;
+  color: white;
+}
+
+.recipeDetaiils {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 50px;
+}
+
+.recipe-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.body {
+  right: 0;
+  top: 0;
+  float: right;
+}
+
+.bbtn {
+  padding: 2px 4px;
+  border-radius: 8px;
+  color: black;
+}
+
+.status {
+  margin-right: 10px;
 }
