@@ -9,13 +9,13 @@
           <a href=<%= url_for(recipe_path(recipe)) %> >
             <p><%= recipe.name %></p>
             <p><%= recipe.description %></p>
+            </a>
             <% if current_user.id == recipe.user_id %>
               <%= button_to "Delete Recipe", recipe, method: :delete %>
             <% end %>
-          </a>
         </div>
       </li>
     <% end %>
   </ul>
 <% end %>
-<a href="<%= url_for(new_recipe_path) %>" class="button button-wide">Add New Recipe</a>
+<a href="<%= url_for(new_recipe_path) %>" class="button button-wide">Add Recipe</a>
