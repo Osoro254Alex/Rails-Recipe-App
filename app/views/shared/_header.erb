@@ -1,13 +1,39 @@
-    <header>
-    <nav>
-      <ul class="logout_cont" >
-        <% if current_user %>
-        <li> <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "home_signout" %></li>
-        <% else %>
-        <li > <%= link_to "Sign Up", new_user_registration_path, class: "nav-link"  %></li>
-        <li > <%= link_to "Sign In", new_user_session_path, class: "nav-link"  %></li>
-        <% end %>
+<nav class="navbar navbar-expand-lg navbar-light bg-red-light shadow-sm" style="background-color: #e3f2fd;">
+  <div class="container">
+    <a class="navbar-brand" href="/">Rails Recipe App</a>
+    <div class="d-flex flex-grow-1 align-items-center justify-content-between">
+      <ul class="d-flex justify-content-start m-0">
+        <li class="nav-item dropdown">
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Food
+          </button>
+          <ul class="dropdown-menu dropdown-menu">
+            <li><a class="dropdown-item" href="/foods">Foods List</a></li>
+            <%# <li><a class="dropdown-item" href="/foods/new">Add Food</a></li> %>
+            <li><a class="dropdown-item" href="/general_shopping_list">Shopping List</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Recipe
+          </button>
+          <ul class="dropdown-menu dropdown-menu">
+            <li><a class="dropdown-item" href="/recipes">Recipes List</a></li>
+            <li><a class="dropdown-item" href="/recipes/new">Add Recipe</a></li>
+            <li><a class="dropdown-item" href="/public_recipes">Public Recipies</a></li>
+          </ul>
+        </li>
       </ul>
-      
-    </nav>
-    </header>
+      <ul class="nav-item m-0 p-0 btn btn-secondary">
+          <% if current_user %>
+            <%= button_to "Sign Out",
+            destroy_user_session_path,
+            method: :delete,
+            class: "btn btn-small btn-outline" %>
+          <% else %>
+            <%= button_to "Sign In", new_user_session_path, class: "btn btn-small btn-outline" %>
+          <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
