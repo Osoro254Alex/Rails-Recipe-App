@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @ingredients = @recipe.recipe_foods.where(recipe: @recipe)
   end
 
   def new
@@ -29,6 +30,13 @@ class RecipesController < ApplicationController
     @recipe.destroy
     flash[:success] = 'Recipe deleted!'
     redirect_to recipes_path
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.public = !@recipe.public
+    @recipe.save
+    redirect_to recipe_path(@recipe), notice: 'Recipe status updated.'
   end
 
   private

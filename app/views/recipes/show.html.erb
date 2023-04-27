@@ -9,17 +9,59 @@
     </div>
     <div>
       <p>Public: <%= @recipe.public %></p>
+       <% if current_user.id == @recipe.user_id %>
+        <% if @recipe.public %>
+          <div class="d-flex align-items-baseline">
+            <h5>Current Status:</h5>
+            <p>Public</p>
+          </div>
+          <div class="d-flex align-items-baseline">
+          <h5>Change Status :</h5>
+          <%= button_to "Public", recipe_path(@recipe), method: :patch%>
+          </div>
+        <% else %>
+          <div class="d-flex align-items-baseline ">
+            <h5>Current Status:</h5>
+            <p>Private</p>
+          </div>
+          <div class="d-flex align-items-baseline">
+          <h5 class="font-weight-bold">Change Status:</h5>
+          <%= button_to "Private", recipe_path(@recipe), method: :patch%>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
-  <div class="recipe-details-btns">
-    <a href="" class="button button-small">Generate Shopping List</a>
-    <a href="" class="button button-small">Add Ingredients</a>
+  <div class="d-flex justify-content-between text-decoration-none mb-5 container">
+    <%= link_to "Generate shopping list",general_shopping_list_index_path, class: 'btn btn-secondary' %>
+    <% if current_user.id == @recipe.user_id %>
+      <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class: 'btn btn-secondary' %>
+    <% end %>
   </div>
+  <table class="table table-sm  table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Value</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+      <tbody class="table-group-divider">
+      <% @ingredients.each do |ingredient|%>
+        <tr>
+          <td><%= ingredient.food.name %></td>
+          <td><%= ingredient.quantity%> <%= ingredient.food.measurement_unit %></td>
+          <td>$ <%= ingredient.food.price * ingredient.quantity %></td>
+          <td>
+          <% if current_user.id == @recipe.user_id %>
+            <%= button_to "Remove", recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.id), method: :delete,  class: "btn btn-link" %>
+          <%else%>
+            <p>Actions Not allowed</p>
+          <%end%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-
-
-
-
-
-
