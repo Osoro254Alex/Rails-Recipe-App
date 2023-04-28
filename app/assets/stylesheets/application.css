@@ -25,6 +25,22 @@
   overflow: hidden;
 }
 
+.notice {
+  background-color: #0bf10b;
+  color: #fff;
+  width: 30%;
+  margin: auto;
+  border-radius: 1rem;
+}
+
+.alert {
+  background-color: #fa0808;
+  color: #fff;
+  width: 30%;
+  margin: auto;
+  border-radius: 1rem;
+}
+
 .link {
   text-decoration: none;
   color: rgb(66, 66, 245);
