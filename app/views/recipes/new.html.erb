@@ -26,9 +26,6 @@
       <div class="field">
         <%= form.label :preparation_time, class: "form-label" %>
         <%= form.text_field :preparation_time, class: "form-input" %>
-      <div>
-        <%= form.label :description %>
-        <%= form.text_area :description, class: "recipe_area" %>
       </div>
       <div class="field">
         <%= form.label :cooking_time, class: "form-label" %>
@@ -40,18 +37,6 @@
 </div>
 
       <%= form.submit "Create Recipe", class: "submit" %>
-      <div>
-        <%= form.label :cooking_time %>
-        <%= form.text_field :cooking_time %>
-      </div>
-      <div>
-        <%= form.label :public %>
-        <%= form.check_box :public%>
-      </div>
-       <div>
-      <%= form.submit "Create Recipe", class: "btn btn-primary" %>
-      <%= link_to "Cancel", recipes_path, class: "btn btn-primary cancel-link" %>
-    </div>
     <% end %>
   </li>
 </ul>
