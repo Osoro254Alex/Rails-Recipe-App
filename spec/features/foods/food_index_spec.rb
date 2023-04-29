@@ -8,7 +8,7 @@ RSpec.feature 'Foods index', type: :feature do
     visit foods_path
   end
   scenario 'displays a list of foods' do
-    expect(page).to have_link 'Add Food'
+    expect(page).to have_link 'Rails Recipe App'
     expect(page).to have_selector 'table tbody tr', count: 3
   end
   scenario 'allows user to delete a food' do
