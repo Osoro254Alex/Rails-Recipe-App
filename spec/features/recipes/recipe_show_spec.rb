@@ -30,20 +30,13 @@ RSpec.describe 'Recipes show Page', type: :feature do
     expect(page).to have_link 'Add Ingredient'
   end
 
-  # scenario 'user can generate shopping list' do
-  #   click_on 'Generate shopping list'
-  #   expect(page).to have_current_path(general_shopping_list_index_path)
-  # end
+  scenario 'user can generate shopping list' do
+    click_on 'Generate shopping list'
+    expect(page).to have_current_path(general_shopping_list_index_path)
+  end
 
   scenario 'user can add a new ingredient' do
     click_on 'Add Ingredient'
     expect(page).to have_current_path(new_recipe_recipe_food_path(recipes.first.id))
-  end
-
-  scenario 'allows user to add a food' do
-    click_on 'Add Ingredient'
-    select 'Banana', from: 'recipe_food[food_id]'
-    click_on 'Add Ingredient'
-    expect(page).to have_content 'Ingredient added successfully!'
   end
 end

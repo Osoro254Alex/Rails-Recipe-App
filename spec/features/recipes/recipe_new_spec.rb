@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Recipes New Page', type: :feature do
-  let!(:user) { User.create(email: 'test@example.com', password: 'password') }
+  let!(:user) { User.create(name: 'Alex', email: 'example@example.com', password: 'password', confirmed_at: Time.current) }
 
   before do
     ActionMailer::Base.deliveries.clear
@@ -13,7 +13,6 @@ RSpec.describe 'Recipes New Page', type: :feature do
   end
 
   scenario 'load new recipe page' do
-    # expect(page).to have_content 'New Recipe'
     expect(page).to have_content 'Name'
     expect(page).to have_content 'Description'
     expect(page).to have_content 'Preparation time'

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Recipes Index Page', type: :feature do
-  let(:user) { User.create(email: 'example@example.com', password: 'password', confirmed_at: Time.current) }
+  let!(:user) { User.create(name: 'Alex', email: 'example@example.com', password: 'password', confirmed_at: Time.current) }
   # rubocop:disable Metrics/BlockLength
   context 'when there are no recipes' do
     before do
@@ -14,9 +14,9 @@ RSpec.describe 'Recipes Index Page', type: :feature do
       expect(page).to have_content 'No recipe available'
     end
 
-    # scenario 'displays All recipes' do
-    #   expect(page).to have_link 'Add Recipe'
-    # end
+    scenario 'displays All recipes' do
+      expect(page).to have_link 'Add Recipe'
+    end
   end
 
   context 'when there are recipes available' do

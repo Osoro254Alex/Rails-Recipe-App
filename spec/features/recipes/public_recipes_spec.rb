@@ -26,15 +26,9 @@ RSpec.describe 'Public Recipes Index Page', type: :feature do
   it 'displays a list of public recipes' do
     recipes.each do |recipe|
       expect(page).to have_link(recipe.name, href: recipe_path(recipe))
-      # expect(page).to have_content("By: #{recipe.user.name}")
+      expect(page).to have_content("By: #{recipe.user.name}")
       expect(page).to have_content('Total food items:')
       expect(page).to have_content('Total price:')
-    end
-  end
-
-  it 'links to individual recipe pages' do
-    recipes.each do |recipe|
-      expect(page).to have_link(recipe.name, href: recipe_path(recipe))
     end
   end
 end

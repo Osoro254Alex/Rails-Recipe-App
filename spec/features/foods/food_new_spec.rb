@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Foods new', type: :feature do
-  let(:user) { User.create!(email: 'test@example.com', password: 'password', confirmed_at: Time.current) }
+  let!(:user) { User.create(name: 'Alex', email: 'example@example.com', password: 'password', confirmed_at: Time.current) }
 
   before do
     ActionMailer::Base.deliveries.clear
@@ -26,11 +26,11 @@ RSpec.feature 'Foods new', type: :feature do
   end
 
   scenario 'allows user to add a food' do
-    fill_in 'Name', with: 'Jamal Goda'
+    fill_in 'Name', with: 'Ibrahim'
     fill_in 'Measurement unit', with: 'Pound'
     fill_in 'Price', with: 10.00
     fill_in 'Quantity', with: 10
     click_on 'Save Food'
-    expect(page).to have_content 'Jamal Goda'
+    expect(page).to have_content 'Ibrahim'
   end
 end
