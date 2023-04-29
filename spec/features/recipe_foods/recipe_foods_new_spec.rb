@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Recipes Food New Page', type: :feature do
-  let!(:user) { User.create(email: 'example@example.com', password: 'password', confirmed_at: Time.current) }
+  let!(:user) { User.create(name: 'Alex', email: 'example@example.com', password: 'password', confirmed_at: Time.current) }
 
   before do
     ActionMailer::Base.deliveries.clear
