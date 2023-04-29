@@ -44,7 +44,7 @@
         <tr>
           <td><%= ingredient.food.name %></td>
           <td><%= ingredient.quantity%> <%= ingredient.food.measurement_unit %></td>
-          <td>$ <%= ingredient.food.price * ingredient.quantity %></td>
+          <td>$ <%= (ingredient.food.price.to_f || 0) * (ingredient.quantity.to_f || 0) %></td>
           <td>
           <% if current_user.id == @recipe.user_id %>
             <%= button_to "Remove", recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.id), method: :delete,  class: "btn btn-link" %>
