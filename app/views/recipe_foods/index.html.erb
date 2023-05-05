@@ -1,0 +1,10 @@
+<div>
+          <a href=<%= url_for(recipe_path(recipe)) %> >
+          </a>
+          <p><%= recipe.description %></p>
+          <% if current_user.id == recipe.user_id %>
+            <%= button_to "Delete Recipe", recipe, method: :delete %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>

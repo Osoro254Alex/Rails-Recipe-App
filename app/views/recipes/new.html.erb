@@ -1,0 +1,43 @@
+<section class="recipe">
+<ul>
+  <li>
+    <h2 class="recipes">Create a New Recipe</h2>
+  </li>
+  <li>
+    <%= form_for @recipe, url: recipes_path, local: true, data: { turbo: false }, method: :post do |form| %>
+      <% if @recipe.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+            <% @recipe.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  <div class="field">
+  <%= form.label :name, class: "form-label" %>
+  <%= form.text_field :name, class: "form-input" %>
+</div>
+
+      <div class="field">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-input text-input" %>
+      </div>
+      <div class="field">
+        <%= form.label :preparation_time, class: "form-label" %>
+        <%= form.text_field :preparation_time, class: "form-input" %>
+      </div>
+      <div class="field">
+        <%= form.label :cooking_time, class: "form-label" %>
+        <%= form.text_field :cooking_time, class: "form-input" %>
+      </div>
+      <div class=" field form-check form-switch">
+  <%= form.label :public, class: "form-label form-check-label" %>
+  <%= form.check_box :public, class: "form-check-input" %>
+</div>
+
+      <%= form.submit "Create Recipe", class: "submit" %>
+    <% end %>
+  </li>
+</ul>
+</section>

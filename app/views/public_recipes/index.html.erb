@@ -1,0 +1,21 @@
+<section>
+<ul class="list-group">
+  <li class="list-group-item" aria-current="true">
+  <h2>Public Recipes</h2>
+  </li>
+  <% @recipes.each do |recipe| %>
+    <li class="list-group-item shadow-sm justify-content-between align-items-center mb-3">
+      <div class="d-flex justify-content-between">
+        <div class="d-flex flex-column mb-3">
+        <h4 class="linkz"><%= link_to recipe.name, recipe_path(recipe) %></h4>
+        <p>By: <%= recipe.user.name %></p>
+        </div>
+        <div class="d-flex flex-column mb-3">
+        <p>Total food items: <%= recipe.all_food_items %></p>
+        <p>Total price: <%= number_to_currency(recipe.total_price) %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+</section>
